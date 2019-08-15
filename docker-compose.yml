@@ -1,0 +1,14 @@
+version: '3.7'
+services:
+  tool:
+    image: elixir
+    tty: true
+    network_mode: "host"
+    environment:
+      - editor=vi
+      - HOME=/home/$USER
+    volumes:
+      - $PWD:/work
+      - $HOME:/home/$USER
+    working_dir: /work
+    stop_signal: SIGKILL
