@@ -17,29 +17,27 @@ defmodule Snippet.Mixfile do
     ]
   end
 
-  defp mix_dir do
+  defp mix_dir(path) do
     # https://github.com/elixir-lang/elixir/blob/v1.9.1/lib/mix/lib/mix/cli.ex#L37
     (System.get_env("MIX_EXS") || "mix.exs")
     |> Path.dirname
     |> Path.expand
+    |> Kernel.<>(path)
   end
 
   # https://hexdocs.pm/mix/Mix.Project.html#build_path/1
   defp build_path do
-    mix_dir()
-    |> Kernel.<>("/_build")
+    mix_dir("/_build")
   end
 
   # https://hexdocs.pm/mix/Mix.Project.html#deps_path/1
   defp deps_path do
-    mix_dir()
-    |> Kernel.<>("/deps")
+    mix_dir("/deps")
   end
 
   # https://elixir-lang.org/getting-started/mix-otp/dependencies-and-umbrella-projects.html#umbrella-projects
   defp lockfile_path do
-    mix_dir()
-    |> Kernel.<>("/mix.lock")
+    mix_dir("/mix.lock")
   end
 
   # mix deps.get && mix deps.compile
