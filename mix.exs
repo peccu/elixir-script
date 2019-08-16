@@ -43,7 +43,7 @@ defmodule Snippet.Mixfile do
   end
 
   # mix deps.get && mix deps.compile
-  # mix run my_script.exs
+  # mix run main.exs
   defp deps do
      [
      ]
